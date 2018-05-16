@@ -1,21 +1,35 @@
 function Airport() {
   this.planes = [];
   const DEFAULT_CAPACITY = 5;
-  capacity = capacity;
+  this.capacity = this.planes.length;
 }
 
-//landing and taking off planes
+//add new landing function including capacity
 
 Airport.prototype.land = function(plane) {
-  this.planes.push(plane);
+  if (this.full === true) {
+    throw new Error("Airport is full, soz");
+  }
+  else {
+    this.planes.push(plane);
+  }
 }
 
 Airport.prototype.takeoff = function(plane) {
-  this.planes.pop(plane);
+  var index = this.planes.indexOf(plane)
+  this.planes.splice(index, 1);
 }
 
 //capacity
 
 Airport.prototype.full = function() {
-  return(this.planes.length === DEFAULT_CAPACITY);
+  if (this.capacity === DEFAULT_CAPACITY) {
+    return true;
+  } else {
+    return false;
+  }
 }
+
+//Airport.prototype.capacity = function() {
+//  capacity = this.planes.length;
+//}
